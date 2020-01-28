@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Find number in Array</title>
+</head>
+<body>
+	
+	<h1>Highest number in array</h1>
+
+	<p id="array"></p>
+
+	<p id="output"></p>
+
+	<script>
+
+		let myArray = [ 2, 1, 6, 7, 8, 6, -2, 9, -3, 2];
+		let highest = 0;
+
+		document.getElementById('array').innerHTML = 'The  array is: ' + myArray;
+
+		for (let i in myArray) {
+			if (myArray[i] > highest) {
+				highest = myArray[i];
+			}
+		}
+
+		document.getElementById('output').innerHTML = 'The highest number in the array is: ' + highest;
+
+	</script>
+</body>
+</html>
