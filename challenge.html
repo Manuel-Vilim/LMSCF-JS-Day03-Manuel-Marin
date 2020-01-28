@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Dice Game - Challenge</title>
+	<style>
+
+		body {
+			font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+			background-color: lightblue;
+		}
+
+		#container {
+			padding: 1rem;
+			text-align: center;
+			width: 50rem;
+			margin: 0 auto;
+			background-color: white;
+			border-radius: 1rem;
+		}
+
+		#playerContainer {
+			display: flex;
+		}
+
+		.playerSide {
+			margin: 1rem;
+			padding: 1rem;
+			width: 30rem;
+			border: solid 1 gray;
+			background-color: lightgray;
+			border-radius: 1rem;
+		}
+
+		.roll {
+		  background-color: #4CAF50;
+		  border: none;
+		  color: white;
+		  padding: 15px 32px;
+		  text-align: center;
+		  text-decoration: none;
+		  display: inline-block;
+		  font-size: 16px;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div id="container">
+		<h1>Dice Game</h1>
+		<h2 id="victory"></h2>
+		<div id='playerContainer'>
+			<div class="playerSide">
+				<h2>Player One: <span id="player1name"></span></h2>
+				<p id="player1DiceRolls"><button id="player1roll" class="roll">Roll dice</button></p>
+				<h2 id="player1DiceSum"></h2>
+			</div>
+			<div class="playerSide">
+				<h2>Player Two: <span id="player2name"></span></h2>
+				<p id="player2DiceRolls"><button id="player2roll" class="roll">Roll dice</button></p>
+				<h2 id="player2DiceSum"></h2>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		let player1 = prompt('Enter the name of player 1: ', 'Joe');
+		let player2 = prompt('Enter the name of player 2: ', 'Jane');
+
+		let player1Dice = [];
+		let player2Dice = [];
+
+		let player1Sum = 0;
+		let player2Sum = 0;
+
+		let player1played = false;
+		let player2played = false;
+
+		let imagePaths = '';
+
+		function diceRolls() {
+			let currentRoll = 0;
+			let diceArray = [];
+			for (i = 0; i < 3; i++) {
+				currentRoll = Math.floor(Math.random() * (6)) + 1;
+				diceArray.push(currentRoll);
+			}
+			return diceArray;
+		}
+
+		function genImagePaths(array) {
+			console.log(array)
+			let genPath = '';
+			for (let i in array) {
+				genPath += `<img src="img/die${array[i]}.png" alt="Die roll of ${array[i]}">`;
+			}
+			return genPath;
+		}
+
+		function sumDice(array) {
+			let sum = 0;
+			for (let i in array) {
+				sum = sum + array[i];
+				console.log('Sum: ' + sum);
+				console.log('Array: ' + array[i]);
+			}
+			return sum;
+		}
+
+		function checkWinner() {
+			if (player1played == true && player2played == true) {
+				if (player1Sum > player2Sum) {
+					document.getElementById('victory').innerHTML = 'Player 1 ' + player1 + ' has won!!!';
+				} else {
+					document.getElementById('victory').innerHTML = 'Player 2 ' + player2 + ' has won!!!';
+				}
+			}
+		}
+
+		window.document.title = player1 + ' vs. ' + player2;
+
+		document.getElementById('player1name').innerHTML = player1;
+		document.getElementById('player2name').innerHTML = player2;
+
+		document.getElementById('player1roll').addEventListener('click', function() {
+			player1Dice = diceRolls();
+			player1Sum = sumDice(player1Dice);
+			console.log(player1Dice)
+			imagePaths = genImagePaths(player1Dice);
+			document.getElementById('player1DiceRolls').innerHTML = 'Player has rolled:<br>' + imagePaths;
+			document.getElementById('player1DiceSum').innerHTML = 'The total is: ' + player1Sum;
+			player1played = true;
+			checkWinner();
+		});
+
+		document.getElementById('player2roll').addEventListener('click', function() {
+			player2Dice = diceRolls();
+			player2Sum = sumDice(player2Dice);
+			console.log(player1Dice)
+			imagePaths = genImagePaths(player2Dice);
+			document.getElementById('player2DiceRolls').innerHTML = 'Player has rolled:<br>' + imagePaths;
+			document.getElementById('player2DiceSum').innerHTML = 'The total is: ' + player2Sum;
+			player2played = true;
+			checkWinner();
+		});
+
+	</script>
+</body>
+</html>
