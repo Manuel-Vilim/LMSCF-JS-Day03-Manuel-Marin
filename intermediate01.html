@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Grades</title>
+
+<style>
+	body {
+		background-color: lightsalmon;
+		font-family: Helvetica, Arial, Geneva, sans-serif;
+	}
+
+	#container {
+		width: 25rem;
+		margin: 0 auto;
+		text-align: center;
+		background-color: white;
+		border-radius: 1rem;
+		padding: 2rem;
+	}
+
+</style>
+</head>
+<body>
+	
+	<div id="container">
+		<h1>Grade averages of class</h1>
+		<p>The students' grades are: <span id="gradeArray"></span></p>
+		<p>The grade average is: <span id="gradeAverage"></span>
+		<h2 id="assessment"></h2>		
+	</div>
+
+	<script>
+		let grades = [76, 85, 65, 93, 81];
+		let totalGrades = 0;
+		let counter = 0;
+		let gradeAverage = 0;
+
+		for (let i in grades) {
+			totalGrades = totalGrades + grades[i];
+			counter++;
+		}
+
+		gradeAverage = totalGrades/counter;
+
+		document.getElementById('gradeArray').innerHTML = grades;
+
+		document.getElementById('gradeAverage').innerHTML = gradeAverage;
+
+		if (gradeAverage < 60) {
+			document.getElementById('assessment').innerHTML = 'Class grade is F';
+		} else if (gradeAverage > 60 && gradeAverage < 71) {
+			document.getElementById('assessment').innerHTML = 'Class grade is D';
+		}  else if (gradeAverage > 70 && gradeAverage < 81) {
+			document.getElementById('assessment').innerHTML = 'Class grade is C';
+		}  else if (gradeAverage > 80 && gradeAverage < 91) {
+			document.getElementById('assessment').innerHTML = 'Class grade is B';
+		}  else if (gradeAverage > 90 && gradeAverage < 101) {
+			document.getElementById('assessment').innerHTML = 'Class grade is A';
+		}
+
+	</script>
+</body>
+</html>
