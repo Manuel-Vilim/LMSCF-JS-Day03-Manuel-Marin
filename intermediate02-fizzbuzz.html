@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FizzBuzz</title>
+	<style>
+
+		body {
+			background-color: lightseagreen;
+		}
+
+		#container {
+			width: 24rem;
+			margin: 0 auto;
+			padding: 1rem;
+			background-color: white;
+		}
+
+		.fbcont {
+			text-align: center;
+			font-size: 200%;
+			color: darkmagenta;
+		}
+
+	</style>
+</head>
+<body>
+
+
+<div id="container">
+	<h1>Fizz Buzz</h1>
+	<p>Enter a number and then we will tell you with "Fizz" which number is divisible by 3 and with "Buzz" which number is divisible by 5, and if it is divisible by both, we will cry "FizzBuzz"</p>
+	<button onclick="doFizzbuzz()">Start FizzBuzz</button>
+	<div class="fbcont"><p id="fbAusgabe"></p></div>
+</div>
+
+<script>
+
+	function doFizzbuzz() {
+		let anzahl = prompt('Anzahl der Durchgänge eingeben: ', 100);
+
+		anzahl = parseInt(anzahl) + 1;
+
+		for (i = 1; i < anzahl; i++) {
+
+
+
+			if (!(i % 3) && !(i % 5)) {
+				document.getElementById('fbAusgabe').innerHTML += ' FizzBuzz<br>';
+			} else if (!(i % 3)) {
+				document.getElementById('fbAusgabe').innerHTML += ' Fizz<br>';
+			} else if (!(i % 5)) {
+				document.getElementById('fbAusgabe').innerHTML += ' Buzz<br>';
+			} else {
+				document.getElementById('fbAusgabe').innerHTML +=  i + '<br>';
+			}
+		}
+	}
+
+
+
+</script>
+</body>
+</html>

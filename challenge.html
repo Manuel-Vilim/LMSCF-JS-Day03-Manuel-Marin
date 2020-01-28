@@ -34,14 +34,19 @@
 		}
 
 		.roll {
-		  background-color: #4CAF50;
-		  border: none;
-		  color: white;
-		  padding: 15px 32px;
-		  text-align: center;
-		  text-decoration: none;
-		  display: inline-block;
-		  font-size: 16px;
+		 	background-color: #4CAF50;
+		 	border: none;
+			border-radius: 1rem;
+		 	color: white;
+		 	padding: 15px 32px;
+		 	text-align: center;
+		 	text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+		}
+
+		.red {
+		 	background-color: red;
 		}
 
 	</style>
@@ -63,6 +68,7 @@
 				<h2 id="player2DiceSum"></h2>
 			</div>
 		</div>
+		<button id="reinitialize" class="roll red" onclick="reinitializeGame()">Restart Game</button>
 	</div>
 
 	<script>
@@ -117,6 +123,36 @@
 					document.getElementById('victory').innerHTML = 'Player 2 ' + player2 + ' has won!!!';
 				}
 			}
+		}
+
+		function reinitializeGame() {
+			player1Dice = [];
+			player2Dice = [];
+
+			player1Sum = 0;
+			player2Sum = 0;
+
+			player1played = false;
+			player2played = false;
+
+			document.getElementById('container').innerHTML = '';
+			document.getElementById('container').innerHTML = `
+				<h1>Dice Game</h1>
+				<h2 id="victory"></h2>
+				<div id='playerContainer'>
+					<div class="playerSide">
+						<h2>Player One: <span id="player1name"></span></h2>
+						<p id="player1DiceRolls"><button id="player1roll" class="roll">Roll dice</button></p>
+						<h2 id="player1DiceSum"></h2>
+					</div>
+					<div class="playerSide">
+						<h2>Player Two: <span id="player2name"></span></h2>
+						<p id="player2DiceRolls"><button id="player2roll" class="roll">Roll dice</button></p>
+						<h2 id="player2DiceSum"></h2>
+					</div>
+				</div>
+				<button id="reinitialize" class="roll red" onclick="reinitializeGame()">Restart Game</button>
+			`
 		}
 
 		window.document.title = player1 + ' vs. ' + player2;
