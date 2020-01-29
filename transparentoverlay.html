@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Overlay</title>
+	<style>
+		#container {
+			margin: 0 auto;
+			width: 50rem;
+			background-color: white;
+		}
+
+		.flexcontainer {
+			display: flex;
+			justify-content: space-between;
+			width: 32rem;
+			height: 25rem;
+		}
+
+		.contentBox {
+			width: 9rem;
+
+		}
+
+		.contentBox img {
+			width:  100%;
+			text-align: center;
+		}
+
+		.formatted {
+			position: relative;
+		}
+
+		.textOverlay {
+			width:  100%;
+			background-color: rgba(0, 0, 0, 0.8);
+			padding: 1rem;
+			bottom: 0;
+			left: 0;
+			position: absolute;
+			color: white;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="container">
+
+		<div class="flexcontainer">
+			
+			<div class="contentBox">
+				<div class="formatted">
+					<img src="img/die1.png" alt="Würfel1">
+					<div class="textOverlay">
+						Lorem ipsum dolor squitur.
+					</div>
+				</div>
+			</div>
+
+			<div class="contentBox">
+				<div class="formatted">
+					<img src="img/die2.png" alt="Würfel2">
+					<div class="textOverlay">
+						Lorem ipsum dolor squitur.
+					</div>
+				</div>
+			</div>
+
+			<div class="contentBox">
+				<div class="formatted">
+					<img src="img/die3.png" alt="Würfel3">
+					<div class="textOverlay">
+						Lorem ipsum dolor squitur.
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+	
+</body>
+</html>
